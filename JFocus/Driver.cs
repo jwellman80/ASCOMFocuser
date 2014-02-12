@@ -45,11 +45,8 @@ namespace ASCOM.JFocus
     {
         private Config config = new Config();
         private Serial serialPort;
-//        private SerialPort serialPort;
-        private System.Windows.Forms.Timer timer;
 
         private TextWriter log;
-        System.Threading.Thread updateThread;
         System.Threading.Mutex mutex = new System.Threading.Mutex();
 
         int lastPos = 0;

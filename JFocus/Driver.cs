@@ -46,8 +46,10 @@ namespace ASCOM.JFocus
         private Config config = new Config();
         private Serial serialPort;
 //        private SerialPort serialPort;
+        private System.Windows.Forms.Timer timer;
 
         private TextWriter log;
+        System.Threading.Thread updateThread;
         System.Threading.Mutex mutex = new System.Threading.Mutex();
 
         int lastPos = 0;
@@ -333,7 +335,7 @@ namespace ASCOM.JFocus
             }
             set
             {
-                this.Connected = true;
+                this.Connected = value;
             }
         }
 
@@ -414,6 +416,8 @@ namespace ASCOM.JFocus
             }
         }
 
+        #endregion
+
 
         public void CommandBlind(string Command, bool Raw = false)
         {
@@ -424,8 +428,5 @@ namespace ASCOM.JFocus
         {
             throw new System.NotImplementedException();
         }
-
-        #endregion
-
     }
 }
